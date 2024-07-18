@@ -50,12 +50,13 @@ void levelOrderTraversal(Node *root)
 
         if (temp == NULL)
         {
+            // NULL act as seprator for printing endl
             cout << endl;
             if (!q.empty())
                 q.push(NULL);
         }
         else
-        {   
+        {
             cout << temp->data << " ";
             if (temp->left)
                 q.push(temp->left);
@@ -63,6 +64,54 @@ void levelOrderTraversal(Node *root)
                 q.push(temp->right);
         }
     }
+}
+
+// LNR
+void inOrderTraversal(Node *root)
+{
+    if (root == NULL)
+        return;
+
+    // left
+    inOrderTraversal(root->left);
+
+    // print
+    cout << root->data << " ";
+
+    // right
+    inOrderTraversal(root->right);
+}
+
+// NLR
+void preOrderTraversal(Node *root)
+{
+    if (root == NULL)
+        return;
+
+    // print
+    cout << root->data << " ";
+
+    // left
+    preOrderTraversal(root->left);
+
+    // right
+    preOrderTraversal(root->right);
+}
+
+// LRN
+void postOrderTraversal(Node *root)
+{
+    if (root == NULL)
+        return;
+
+    // left
+    postOrderTraversal(root->left);
+
+    // right
+    postOrderTraversal(root->right);
+
+    // print
+    cout << root->data << " ";
 }
 
 int main()
@@ -76,6 +125,21 @@ int main()
     // level order traversal
     cout << "Printing the level order traversal" << endl;
     levelOrderTraversal(root);
+    cout<<endl;
+
+    // inOrder traversal
+    cout << "Printing the  inOrder traversal" << endl;
+    inOrderTraversal(root);
+    cout<<endl;
+
+    // preOrder traversal
+    cout << "Printing the  preOrder traversal" << endl;
+    preOrderTraversal(root);
+    cout<<endl;
+
+    // postOrder traversal
+    cout << "Printing the  postOrder traversal" << endl;
+    postOrderTraversal(root);
 
     return 0;
 }
