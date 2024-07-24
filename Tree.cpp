@@ -189,16 +189,17 @@ int main()
 {
     Node *root = NULL;
 
-    buildFromLevelOrderTraversal(root);
-    levelOrderTraversal(root);
+    // buildFromLevelOrderTraversal(root);
+    // levelOrderTraversal(root);
     // // creating a Tree
-    // root = buildTree(root);
+    root = buildTree(root);
     // // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
+    // 12 11 12 7 1 12 14 11 -1 7 3 6 4 12 7 14 14 -1 2 10 8 7 -1 -1 -1 -1 -1 -1 -1 -1
 
     // // level order traversal
-    // cout << "Printing the level order traversal" << endl;
-    // levelOrderTraversal(root);
-    // cout << endl;
+    cout << "Printing the level order traversal" << endl;
+    levelOrderTraversal(root);
+    cout << endl;
 
     // // inOrder traversal
     // cout << "Printing the  inOrder traversal" << endl;
