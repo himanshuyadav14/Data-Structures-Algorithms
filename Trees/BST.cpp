@@ -128,54 +128,54 @@ Node *maxValue(Node *root)
 }
 
 // Deletion in BST
-Node *deleteFromBST(Node *root, int val)
-{
-    // base case
-    if (!root)
-        return NULL;
+// Node *deleteFromBST(Node *root, int val)
+// {
+//     // base case
+//     if (!root)
+//         return NULL;
 
-    if (root->data == val)
-    {
+//     if (root->data == val)
+//     {
 
-        // 0 child
-        if(root->left == NULL && root->right == NULL){
-            delete root;
-            return NULL;
-        }
-        // 1 child
-        //left child
-        if(root->left != NULL && root->right == NULL){
-            Node* temp = root->left;
-            delete root;
-            return temp;
-        }
+//         // 0 child
+//         if(root->left == NULL && root->right == NULL){
+//             delete root;
+//             return NULL;
+//         }
+//         // 1 child
+//         //left child
+//         if(root->left != NULL && root->right == NULL){
+//             Node* temp = root->left;
+//             delete root;
+//             return temp;
+//         }
 
-        //right child
-        if(root->left == NULL && root->right != NULL){
-            Node* temp = root->right;
-            delete root;
-            return temp;
-        }
+//         //right child
+//         if(root->left == NULL && root->right != NULL){
+//             Node* temp = root->right;
+//             delete root;
+//             return temp;
+//         }
 
-        // 2 child
-        if(root->left!=NULL && root->right!=NULL){
-            int mini = minValue(root->right)->data;
-            root->data = mini;
-            root->right = deleteFromBST(root->right,mini);
-            return root;
-        }
-    }
-    else if (val < root->data)
-    {
-        root->left = deleteFromBST(root->left, val);
-        return root;
-    }
-    else
-    {
-        root->right = deleteFromBST(root->right, val);
-        return root;
-    }
-}
+//         // 2 child
+//         if(root->left!=NULL && root->right!=NULL){
+//             int mini = minValue(root->right)->data;
+//             root->data = mini;
+//             root->right = deleteFromBST(root->right,mini);
+//             return root;
+//         }
+//     }
+//     else if (val < root->data)
+//     {
+//         root->left = deleteFromBST(root->left, val);
+//         return root;
+//     }
+//     else
+//     {
+//         root->right = deleteFromBST(root->right, val);
+//         return root;
+//     }
+// }
 
 // Time complexity : O(logn)
 int main()
@@ -193,7 +193,7 @@ int main()
     cout << "Minimum value in BST is " << minValue(root)->data << endl;
     cout << "Maximum value in BST is " << maxValue(root)->data << endl;
 
-    root = deleteFromBST(root,50);
+    // root = deleteFromBST(root,50);
 
     // Perform Level order traversal
     cout << "Printing Level Order Traversal" << endl;

@@ -1,5 +1,5 @@
 ---
 triple:          'arm64-apple-darwin'
-binary-path:     '/Users/himanshuyadav/Desktop/30DC/Trees/output/BST'
+binary-path:     '/Users/himanshuyadav/Desktop/Data Structures & Algorithms/Trees/output/BST'
 relocations:     []
 ...
