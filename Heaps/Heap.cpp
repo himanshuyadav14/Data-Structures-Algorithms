@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 class heap
@@ -154,4 +155,33 @@ int main()
         cout << arr[i] << " ";
     }
     cout << endl;
-}
+
+    cout<<"Using priority queue here"<<endl;
+    priority_queue<int>pq;  //Max Heap
+    pq.push(4);
+    pq.push(2);
+    pq.push(5);
+    pq.push(3);
+    pq.pop();
+    cout<<"Element at top "<<pq.top()<<endl;
+
+    cout<<"Size is "<<pq.size()<<endl;
+
+    if(pq.empty()) cout<<"Pq is empty"<<endl;
+    else cout<<"PQ is not empty"<<endl;
+
+    priority_queue<int, vector<int>, greater<int> >pq2;
+
+    pq2.push(4);
+    pq2.push(2);
+    pq2.push(5);
+    pq2.push(3);
+    // pq2.pop();
+    cout<<"Element at top "<<pq2.top()<<endl;
+
+    cout<<"Size is "<<pq2.size()<<endl;
+
+    if(pq2.empty()) cout<<"Pq is empty"<<endl;
+    else cout<<"PQ is not empty"<<endl;
+
+}   
