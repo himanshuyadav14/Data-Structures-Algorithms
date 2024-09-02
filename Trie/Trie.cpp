@@ -35,7 +35,6 @@ public:
             return;
         }
             
-
         // Assumption : word will be in caps
         int index = word[0] - 'A';
 
@@ -83,8 +82,54 @@ public:
         return searchUtil(root, word);
     }
 
-    void removeWord(string word){
-        
+    bool removeUtil(TrieNode* root, string word) {
+        // Base case: if the word is completely traversed
+        if (word.length() == 0) {
+            // Mark the current node as non-terminal
+            if (root->isTerminal) {
+                root->isTerminal = false;
+
+                // If the current node has no children, it can be deleted
+                for (int i = 0; i < 26; i++) {
+                    if (root->children[i] != NULL) {
+                        return false; // Don't delete the node
+                    }
+                }
+                return true; // Delete the node
+            }
+        }
+
+        // Recursive case
+        int index = word[0] - 'A';
+        TrieNode* child = root->children[index];
+
+        if (child == NULL) {
+            return false; // Word not found
+        }
+
+        bool shouldDeleteChild = removeUtil(child, word.substr(1));
+
+        // If the child should be deleted, remove the reference
+        if (shouldDeleteChild) {
+            delete child;
+            root->children[index] = NULL;
+
+            // Check if the current node is now redundant
+            if (!root->isTerminal) {
+                for (int i = 0; i < 26; i++) {
+                    if (root->children[i] != NULL) {
+                        return false; // Don't delete the node
+                    }
+                }
+                return true; // Delete the node
+            }
+        }
+
+        return false;
+    }
+
+    void removeWord(string word) {
+        removeUtil(root, word);
     }
 };
 
@@ -92,14 +137,22 @@ int main()
 {
     Trie *t = new Trie();
     t->insertWord("ABCD");
-    
-    cout<<"Present or not"<<endl;
-    cout<<t->searchWord("J")<<endl;
+    t->insertWord("AB");
 
-    cout<<"Present or not"<<endl;
-    cout<<t->searchWord("ABCD")<<endl;
+    cout << "Present or not (J): " << t->searchWord("J") << endl;
+    cout << "Present or not (ABCD): " << t->searchWord("ABCD") << endl;
+    cout << "Present or not (AB): " << t->searchWord("AB") << endl;
 
-    cout<<"Present or not"<<endl;
-    cout<<t->searchWord("AB")<<endl;
+    t->removeWord("ABCD");
+
+    cout << "After removing ABCD" << endl;
+    cout << "Present or not (ABCD): " << t->searchWord("ABCD") << endl;
+    cout << "Present or not (AB): " << t->searchWord("AB") << endl;
+
+    t->removeWord("AB");
+
+    cout << "After removing AB" << endl;
+    cout << "Present or not (AB): " << t->searchWord("AB") << endl;
+
     return 0;
 }
