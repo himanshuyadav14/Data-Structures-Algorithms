@@ -1,5 +1,5 @@
 //Using BFS //Kahn's Algo
-
+//------------------------------------------*****************************----------------------------------------------
 // vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
 //     unordered_map<int,vector<int>>adj;
 //     for(int i=0; i<e; i++){
@@ -38,9 +38,11 @@
 
 //     return ans;
 // }
-
+//------------------------------------------*****************************----------------------------------------------
 
 //Using DFS
+
+//------------------------------------------*****************************----------------------------------------------
 // void tsDFS(int node, unordered_map<int,vector<int>>& adj, unordered_map<int,bool>& visited, 
 // stack<int>&st){
 //     visited[node] = true;
@@ -53,6 +55,8 @@
 
 //     st.push(node);
 // }
+
+//------------------------------------------*****************************----------------------------------------------
 // vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
 //     unordered_map<int,vector<int>>adj;
 //     for(int i=0; i<e; i++){
