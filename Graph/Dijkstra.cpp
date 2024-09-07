@@ -31,7 +31,6 @@
 //         int topNode = top.second;
 
 //         set.erase(set.begin());
-        
 //         for(auto neighbour: adj[topNode]){
 //             if(dist[topNode] + neighbour.second < dist[neighbour.first]){
 //                 auto record = set.find({dist[neighbour.first],neighbour.first});
