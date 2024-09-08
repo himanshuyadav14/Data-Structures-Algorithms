@@ -36,7 +36,7 @@
 
 //         vector<vector<int>>Bridges;
 //         vector<int>disc(n,0);
-//         vector<int>low(n+1,0);
+//         vector<int>low(n,0);
 
 //         vector<bool>visited(n,false);
 //         int count = 0;
