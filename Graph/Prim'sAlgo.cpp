@@ -53,3 +53,49 @@
 // }
 
 
+
+
+//Prim's Algo using PQ
+// #include <bits/stdc++.h> 
+// vector<pair<pair<int, int>, int>> calculatePrimsMST(int n, int m, vector<pair<pair<int, int>, int>> &g)
+// {
+//     unordered_map<int,vector<pair<int,int>>>adj;
+//     for(int i=0; i<m; i++){
+//         int u = g[i].first.first;
+//         int v = g[i].first.second;
+//         int wt = g[i].second;
+
+//         adj[u].push_back({v,wt});
+//         adj[v].push_back({u,wt});
+//     }
+
+//     priority_queue<pair<pair<int, int>, int>, vector<pair<pair<int, int>, int>>, greater<pair<pair<int, int>, int>>> pq;
+//     vector<bool> visited(n, false);
+    
+//     vector<pair<pair<int, int>, int>> mstEdges;
+//     pq.push({{0, 1}, -1});
+
+//     while (!pq.empty()) {
+//         auto [wt_node, parent] = pq.top();
+//         pq.pop();
+//         int wt = wt_node.first;
+//         int node = wt_node.second;  
+
+//         if (visited[node]) continue;
+//         visited[node] = true;
+//         if (parent != -1) {
+//             mstEdges.push_back({{parent, node}, wt});
+//         }
+
+//         for (auto &[neighbor, weight] : adj[node]) {
+//             if (!visited[neighbor]) {
+//                 pq.push({{weight, neighbor}, node});
+//             }
+//         }
+//     }
+
+//     return mstEdges;
+// }
+
+
+
