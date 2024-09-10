@@ -2,16 +2,15 @@
 // private:
 //     void DFS(int node, int parent, vector<vector<int>>& adj, vector<int>& disc,
 //     vector<int>& low, vector<bool>& visited, vector<vector<int>>& Bridges, int count){
-//         disc[node] = low[node] = count;
+//         disc[node] = low[node] = timer++;
 //         visited[node] = true;
-//         count++;
 
 //         for(auto &nbr: adj[node]){
 //             if(nbr == parent) continue;
 //             else if(visited[nbr]){
 //                 low[node] = min(low[node], low[nbr]);
 //             }else{
-//                 DFS(nbr, node, adj, disc, low, visited, Bridges, count);
+//                 DFS(nbr, node, adj, disc, low, visited, Bridges, timer);
 //                 low[node] = min(low[node], low[nbr]);
 
 //                 //Bridge exist or not
@@ -37,11 +36,11 @@
 //         vector<vector<int>>Bridges;
 //         vector<int>disc(n,0);
 //         vector<int>low(n,0);
-
 //         vector<bool>visited(n,false);
-//         int count = 0;
 
-//         DFS(0, -1, adj, disc, low, visited, Bridges, count);
+//         int timer = 0;
+
+//         DFS(0, -1, adj, disc, low, visited, Bridges, timer);
 
 //         return Bridges;
 //     }
