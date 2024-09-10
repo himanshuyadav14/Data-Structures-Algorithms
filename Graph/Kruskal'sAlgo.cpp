@@ -12,6 +12,7 @@
 
 // int findParent(vector<int>& parent, int node){
 //     if(parent[node] == node) return node;
+        //Path compression
 //     return parent[node] = findParent(parent, parent[node]);
 // }
 
