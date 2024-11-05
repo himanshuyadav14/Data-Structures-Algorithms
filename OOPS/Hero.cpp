@@ -10,10 +10,15 @@ class Hero{
   public:
   char level;
 
+  Hero(){
+    cout<<"constructor called"<<endl;
+  }
+
   void print(){
     cout<<health<<endl;
   }
-
+  
+  //Getter/ Setter
   int getHealth(){
     return health;
   }
