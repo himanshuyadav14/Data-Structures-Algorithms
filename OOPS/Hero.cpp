@@ -8,14 +8,30 @@ class Hero{
   int health;
 
   public:
+  char *name;
   char level;
 
   Hero(){
     cout<<"constructor called"<<endl;
+    name = new char[100];
+  }
+
+  //copy constructor for deep copy
+  Hero(Hero& temp){
+    char *ch = new char[strlen(temp.name) + 1];
+    strcpy(ch, temp.name);
+
+    this->name = ch;
+    this->health = temp.health;
+    this->level = temp.level;
   }
 
   void print(){
-    cout<<health<<endl;
+    cout<<endl;
+    cout<<"[ Name is: "<<name<<",";
+    cout<<" Health is: "<<health<<",";
+    cout<<" Level is: "<<level<<" ]";
+    cout<<endl;
   }
   
   //Getter/ Setter
@@ -33,5 +49,9 @@ class Hero{
 
   void setLevel(int level){
     this->level = level;
+  }
+
+  void setName(char name[]){
+    strcpy(this->name, name);
   }
 };
