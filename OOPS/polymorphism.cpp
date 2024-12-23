@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 
+//Method overloading
 class A {
 
     public:
@@ -42,6 +43,7 @@ class B {
 
 };
 
+// Method overriding
 class Animal {
     public:
     void speak() {
