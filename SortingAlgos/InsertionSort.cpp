@@ -2,6 +2,7 @@
 #include<vector>
 using namespace std;
 
+// T.C = Worst case O(n^2); 
 void insertionSort(int *arr, int n) {
     for (int i = 1; i < n; i++) {
         int key = arr[i];    // Take the current element

@@ -4,7 +4,7 @@ using namespace std;
 
 //space complexity : O(n)
 //Time complexity : O(nlogn)
-void mergeTwoSortedArrays(int *arr, int s, int e){
+void mergeTwoSortedArrays(int *arr, int s, int e){ //O(n)
     int mid = (s+e)/2;
 
     int len1 = mid-s+1;
@@ -42,7 +42,7 @@ void mergeTwoSortedArrays(int *arr, int s, int e){
     }
 }
 
-void mergeSort(int *arr, int s, int e){
+void mergeSort(int *arr, int s, int e){ //logn
     //Base case
     if(s>=e) return;
 
