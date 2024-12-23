@@ -55,8 +55,6 @@ class Dog: public Animal {
     void speak() {
         cout << "Barking " << endl;
     }
-
-
 };
 
 

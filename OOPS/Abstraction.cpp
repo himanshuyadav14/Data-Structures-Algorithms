@@ -3,7 +3,6 @@ using namespace std;
 
 class Hero
 {
-
     // Properties;
 private:
     int health;
@@ -70,8 +69,8 @@ public:
         cout << "Destructor called" << endl;
     }
 
-    static int random(){
+    static int random()
+    {
         return timeToComplete;
-
     }
 };

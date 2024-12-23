@@ -2,8 +2,8 @@
 #include<vector>
 using namespace std;
 
+//Time complexity : O(nlogn) all cases
 //space complexity : O(n)
-//Time complexity : O(nlogn)
 void mergeTwoSortedArrays(int *arr, int s, int e){ //O(n)
     int mid = (s+e)/2;
 
