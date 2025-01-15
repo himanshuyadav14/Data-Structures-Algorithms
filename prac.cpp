@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 // compile type polymorphism
@@ -54,31 +55,27 @@ public:
 
 // Run time polymorphism
 // function overriding
-class Base
+class Animal
 {
 public:
-    virtual void print()
-    {
-        cout << "This is Base class print function" << endl;
-    }
+    virtual void speak() = 0;//pure virtual function (Abstract class)
+};
 
-    void display()
+class Dog : public Animal
+{
+public:
+    void speak()
     {
-        cout << "This is the Base class display function" << endl;
+        cout << "bark....." << endl;
     }
 };
 
-class Derived : public Base
+class Cat : public Animal
 {
 public:
-    void print()
+    void speak()
     {
-        cout << "This is Derived class print function" << endl;
-    }
-
-    void display()
-    {
-        cout << "This is the Dervied class display function" << endl;
+        cout << "Meow....." << endl;
     }
 };
 
@@ -93,14 +90,19 @@ int main()
     Complex c3 = c1 + c2;
     c3.display();
 
-    Base *basePointer;
-    
-    Derived d;
-    basePointer = &d;
+    Animal *p;
+    vector<Animal *> animals;
 
-    
-    basePointer->print();
-    basePointer->display();
-    
+    animals.push_back(new Dog());
+    animals.push_back(new Cat());
+    animals.push_back(new Dog());
+    animals.push_back(new Cat());
+
+    for (int i = 0; i < 5; i++)
+    {
+        p = animals[i];
+        p->speak();
+    }
+
     return 0;
 }
