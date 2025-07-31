@@ -6,7 +6,7 @@ using namespace std;
 class Graph
 {
 public:
-    unordered_map<int, list<int> > adjList;
+    unordered_map<int, list<int>> adjList;
 
     void addEdge(int u, int v, bool direction)
     {
@@ -38,23 +38,27 @@ public:
 int main()
 {
     int n;
-    cout<<"Enter the number of nodes"<<endl;
-    cin>>n;
+    cout << "Enter the number of nodes" << endl;
+    cin >> n;
 
     int m;
-    cout<<"Enter the number of edges"<<endl;
-    cin>>m;
-    
+    cout << "Enter the number of edges" << endl;
+    cin >> m;
+
     Graph g;
 
-    for(int i=0; i<m; i++){
+    for (int i = 0; i < m; i++)
+    {
         int u, v;
-        cin >>u >> v;
-        //creation of graph
-        g.addEdge(u,v,0);
+        cin >> u >> v;
+        // creation of graph
+        g.addEdge(u, v, 0);
     }
 
-    //print of graph
+    // add edge time complexity -> O(M) , Space complexity -> O(N)
+    // print graph time complexity -> O(N*M)
+
+    // print of graph
     g.printAdjList();
     return 0;
 }
