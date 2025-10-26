@@ -1,12 +1,13 @@
 #include <iostream>
 #include <unordered_map>
 #include <list>
+#include <vector>
 using namespace std;
 
 class Graph
 {
 public:
-    unordered_map<int, list<int>> adjList;
+    unordered_map<int, vector<int>> adj;
 
     void addEdge(int u, int v, bool direction)
     {
@@ -14,22 +15,23 @@ public:
         // direction = 1 -> directed graph
 
         // create an edge from u to v
-        adjList[u].push_back(v);
+        adj[u].push_back(v);
         if (direction == 0)
         {
-            adjList[v].push_back(u);
+            adj[v].push_back(u);
         }
     }
 
     void printAdjList()
     {
-        for (auto &i : adjList)
+        for (auto &i : adj)
         {
+            // {node, list of nodes} or {node, vector<int>}
+            // i.first is the node
+            // i.second is the vector of nodes which are connected to the node i.first
             cout << i.first << "->";
             for (auto &j : i.second)
-            {
                 cout << j << ", ";
-            }
             cout << endl;
         }
     }
@@ -37,6 +39,7 @@ public:
 
 int main()
 {
+
     int n;
     cout << "Enter the number of nodes" << endl;
     cin >> n;
@@ -44,21 +47,15 @@ int main()
     int m;
     cout << "Enter the number of edges" << endl;
     cin >> m;
-
+    //creation of graph
     Graph g;
-
     for (int i = 0; i < m; i++)
     {
         int u, v;
         cin >> u >> v;
-        // creation of graph
         g.addEdge(u, v, 0);
     }
-
-    // add edge time complexity -> O(M) , Space complexity -> O(N)
-    // print graph time complexity -> O(N*M)
-
-    // print of graph
+    //print the graph
     g.printAdjList();
     return 0;
 }
