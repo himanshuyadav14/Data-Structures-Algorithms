@@ -53,9 +53,49 @@ int main()
     {
         int u, v;
         cin >> u >> v;
+        
+        // Validate that nodes are in range [0, n-1]
+        if (u < 1 || v < 1 || u > n || v > n)
+        {
+            cout << "Invalid edge: Node out of range!" << endl;
+            cout << "Expected nodes in range [0, " << n-1 << "]" << endl;
+            continue;
+        }
+        
         g.addEdge(u, v, 0);
     }
     //print the graph
     g.printAdjList();
     return 0;
 }
+
+
+// Coding ninjas solution of creating and printing graph
+// vector < vector < int >> printAdjacency(int n, int m, vector < vector < int >> & edges) {
+    // n nodes
+    // m edges
+
+//     vector<vector<int>>ans(n);
+
+//     for(int i=0; i<m; i++){
+//         int u = edges[i][0];
+//         int v = edges[i][1];
+
+//         ans[u].push_back(v);
+//         ans[v].push_back(u);
+//     }
+
+
+//     vector<vector<int>>ans2;
+    
+//     for(int i=0; i<n; i++){
+//         vector<int>temp;
+//         temp.push_back(i);
+
+//         for(auto j:ans[i]) temp.push_back(j);
+//         ans2.push_back(temp);
+//     }
+
+//     return ans2;
+// }
+

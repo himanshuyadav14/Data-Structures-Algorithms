@@ -1,107 +1,54 @@
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-#include <stack>
-#include <limits.h>
+// void dfs(int node, vector<bool> &visited, stack<int> &st, unordered_map<int, vector<pair<int, int>>> &adj) {
+//     visited[node] = true;
 
-using namespace std;
+//     for (auto &[nbr, wt] : adj[node]) {
+//         if (!visited[nbr]) {
+//             dfs(nbr, visited, st, adj);
+//         }
+//     }
 
-class Graph
-{
-public:
-    unordered_map<int, vector<pair<int, int> > > adjList;
+//     st.push(node); 
+// }
 
-    void addEdge(int u, int v, int wt)
-    {
-        adjList[u].push_back(make_pair(v, wt));
-    }
+// vector<int> shortestPathInDAG(int n, int m, vector<vector<int>> &edges) {
+//     // Step 1: Build adjacency list
+//     unordered_map<int, vector<pair<int, int>>> adj;
+//     for (int i = 0; i < m; i++) {
+//         int u = edges[i][0];
+//         int v = edges[i][1];
+//         int w = edges[i][2];
+//         adj[u].push_back({v, w});
+//     }
 
-    void printAdjList()
-    {
-        // Iterate over each element in the adjacency list
-        for (unordered_map<int, vector<pair<int, int> > >::iterator it = adjList.begin(); it != adjList.end(); ++it)
-        {
-            cout << it->first << "->";
-            for (vector<pair<int, int> >::iterator jt = it->second.begin(); jt != it->second.end(); ++jt)
-            {
-                cout << "(" << jt->first << ", " << jt->second << "), ";
-            }
-            cout << endl;
-        }
-    }
+//     // Step 2: Topological Sort (using DFS)
+//     vector<bool> visited(n, false);
+//     stack<int> st;
+//     for (int i = 0; i < n; i++) {
+//         if (!visited[i]) dfs(i, visited, st, adj);
+//     }
 
-    //Topological sort DFS
-    void DFS(int node, unordered_map<int, bool> &visited, stack<int> &st)
-    {
-        visited[node] = true;
+//     // Step 3: Initialize distances
+//     vector<int> dist(n, INT_MAX);
+//     dist[0] = 0; // distance to source (0) is always 0
 
-        for (auto &neighbour : adjList[node])
-        {
-            if (!visited[neighbour.first])
-            {
-                DFS(neighbour.first, visited, st);
-            }
-        }
+//     // Step 4: Relax edges in topological order
+//     while (!st.empty()) {
+//         int top = st.top();
+//         st.pop();
 
-        st.push(node);
-    }
+//         if (dist[top] != INT_MAX) {
+//             for (auto &[v, wt] : adj[top]) {
+//                 if (dist[top] + wt < dist[v]) {
+//                     dist[v] = dist[top] + wt;
+//                 }
+//             }
+//         }
+//     }
 
-    void getShortestPath(int src, vector<int> &dist, stack<int> &st)
-    {
-        dist[src] = 0;
+//     // Step 5: Replace unreachable vertices (INT_MAX) with -1
+//     for (int i = 0; i < n; i++) {
+//         if (dist[i] == INT_MAX) dist[i] = -1;
+//     }
 
-        while (!st.empty())
-        {
-            int top = st.top();
-            st.pop();
-
-            if(dist[top] != INT_MAX){
-                for(auto& i : adjList[top]){
-                    if(dist[top] + i.second < dist[i.first]){
-                        dist[i.first] = dist[top] + i.second;
-                    }
-                }
-            }
-        }
-    }
-};
-
-int main()
-{
-    Graph g;
-    g.addEdge(0, 1, 5);
-    g.addEdge(0, 2, 3);
-    g.addEdge(1, 2, 2);
-    g.addEdge(1, 3, 6);
-    g.addEdge(2, 3, 7);
-    g.addEdge(2, 4, 4);
-    g.addEdge(2, 5, 2);
-    g.addEdge(3, 4, -1);
-    g.addEdge(4, 5, -2);
-
-    g.printAdjList();
-
-    int n = 6;
-    //Topological Sort
-    unordered_map<int, bool> visited;
-    stack<int> st;
-    for (int i = 0; i < n; i++)
-    {
-        if (!visited[i])
-        {
-            g.DFS(i, visited, st);
-        }
-    }
-
-    int src = 1;
-    vector<int> dist(n);
-    fill(dist.begin(), dist.end(), INT_MAX);
-    g.getShortestPath(src, dist, st);
-
-    for(int i=0; i<n; i++){
-        cout<<dist[i]<<" ";
-    }
-    cout<<endl;
-
-    return 0;
-}
+//     return dist;
+// }
