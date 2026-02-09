@@ -30,11 +30,12 @@ public:
     void insertUtil(TrieNode *root, string word)
     {
         // Base case
-        if (word.length() == 0){
+        if (word.length() == 0)
+        {
             root->isTerminal = true;
             return;
         }
-            
+
         // Assumption : word will be in caps
         int index = word[0] - 'A';
 
@@ -59,39 +60,50 @@ public:
         insertUtil(root, word);
     }
 
-    bool searchUtil(TrieNode* root, string word){
-        //Base case
-        if(word.length() == 0){
+    bool searchUtil(TrieNode *root, string word)
+    {
+        // Base case
+        if (word.length() == 0)
+        {
             return root->isTerminal;
         }
 
-        int index = word[0]-'A';
+        int index = word[0] - 'A';
 
-        TrieNode* child;
+        TrieNode *child;
 
-        if(root->children[index] != NULL){
+        if (root->children[index] != NULL)
+        {
             child = root->children[index];
-        }else{
+        }
+        else
+        {
             return false;
         }
 
         return searchUtil(child, word.substr(1));
     }
 
-    bool searchWord(string word){
+    bool searchWord(string word)
+    {
         return searchUtil(root, word);
     }
 
-    bool removeUtil(TrieNode* root, string word) {
+    bool removeUtil(TrieNode *root, string word)
+    {
         // Base case: if the word is completely traversed
-        if (word.length() == 0) {
+        if (word.length() == 0)
+        {
             // Mark the current node as non-terminal
-            if (root->isTerminal) {
+            if (root->isTerminal)
+            {
                 root->isTerminal = false;
 
                 // If the current node has no children, it can be deleted
-                for (int i = 0; i < 26; i++) {
-                    if (root->children[i] != NULL) {
+                for (int i = 0; i < 26; i++)
+                {
+                    if (root->children[i] != NULL)
+                    {
                         return false; // Don't delete the node
                     }
                 }
@@ -101,23 +113,28 @@ public:
 
         // Recursive case
         int index = word[0] - 'A';
-        TrieNode* child = root->children[index];
+        TrieNode *child = root->children[index];
 
-        if (child == NULL) {
+        if (child == NULL)
+        {
             return false; // Word not found
         }
 
         bool shouldDeleteChild = removeUtil(child, word.substr(1));
 
         // If the child should be deleted, remove the reference
-        if (shouldDeleteChild) {
+        if (shouldDeleteChild)
+        {
             delete child;
             root->children[index] = NULL;
 
             // Check if the current node is now redundant
-            if (!root->isTerminal) {
-                for (int i = 0; i < 26; i++) {
-                    if (root->children[i] != NULL) {
+            if (!root->isTerminal)
+            {
+                for (int i = 0; i < 26; i++)
+                {
+                    if (root->children[i] != NULL)
+                    {
                         return false; // Don't delete the node
                     }
                 }
@@ -128,11 +145,12 @@ public:
         return false;
     }
 
-    void removeWord(string word) {
+    void removeWord(string word)
+    {
         removeUtil(root, word);
     }
 
-    //LONGEST COMMON PREFIX UPDATED
+    // LONGEST COMMON PREFIX UPDATED
 
     // void lcp(string str, string& ans){
     //     TrieNode* current = root;
@@ -152,7 +170,6 @@ public:
     //         if(current->isTerminal) break;
     //     }
     // }
-
 };
 
 int main()
